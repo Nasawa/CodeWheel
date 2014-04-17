@@ -1,0 +1,143 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# Codewheel
+CodeWheel API is a **code solution hosting service** for any platform from Android to Bash.
+
+# Group Platform
+Platforms are the foundation of **CodeWheel** and host all **solutions**.
+
+## Platforms [/platforms/{id}]
+A single platform.
+
++ Parameters
+    + id (required, string) ... String identifier, could be platform name or numeric ID. `-1` returns all.
+    
+### Select Platform [GET] 
+    
++ Request (application/json)
+
+        {"id": "-1"}
+
++ Response 200 (application/json)
+
+        [{
+          "id": 0, "title": "Android", "count": 288, "last_active": "hh:mm:ss - mm/dd/yyyy"
+        }, {
+          "id": 1, "title": "iOS", "count": 387, "last_active": "hh:mm:ss - mm/dd/yyyy"
+        }]
+
+## Solution [/{platform}/{id}]
+A single Solution object with all its details
+
++ Parameters
+    + platform (required, string) ... Platform that this solution is a child of (`android`, `ios`, `rails`).
+    + id (required, number, `1`) ... Numeric `id` of the Solution to retrieve.
+
+### Retrieve a Solution [GET]
+
++ Request (application/json)
+
+        {"platform": "android", "id": 241}
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            { 
+                "id": 241, 
+                "platform": "android",
+                "title": "Android Login Screen", 
+                "author": "c0d3wiz", 
+                "post_date": "hh:mm:ss - mm/dd/yyyy",
+                "files":
+                {
+                    "fileArray":
+                    [
+                        {
+                            "file_name": "login.xml",
+                            "file_type": "xml",
+                            "file_location": "codefiles/android/241/login.xml"
+                        },
+                        {
+                            "file_name": "LoginActivity.java",
+                            "file_type": "java",
+                            "file_location": "codefiles/android/241/LoginActivity.java"
+                        }
+                    ],
+                    "count": 2
+                },
+                "images":
+                {
+                    "imgArray":
+                    [
+                        {
+                            "img_name": "loginDemo.png",
+                            "img-type": "PNG",
+                            "img-location": "imgfiles/android/241/loginDemo.png"
+                        }
+                    ],
+                    "count": 1
+                },
+                "preview": 0,
+                "history":
+                {
+                    "versionArray":
+                    [
+                        {
+                            "edit_date": "hh:mm:ss - mm/dd/yyyy",
+                            "change_loc": "archive/android/241/v3"
+                        },
+                        {
+                            "edit_date": "hh:mm:ss - mm/dd/yyyy",
+                            "change_loc": "archive/android/241/v2"
+                        },
+                        {
+                            "edit_date": "hh:mm:ss - mm/dd/yyyy",
+                            "change_loc": "archive/android/241/v1"
+                        }
+                    ],
+                    "count": 3
+                },
+                "comments":
+                {
+                    "commentArray":
+                    [
+                        {
+                            "author": "magicKlondike",
+                            "text": "How now brown cow?",
+                            "points": 26,
+                            "post_date": "23:14:12 - 07/22/2015",
+                            "prev_edit": "23:14:51 - 07/22/2015",
+                            "history":
+                            {
+                                "versionArray":
+                                [
+                                    {
+                                        "text": "How now bron cow?",
+                                        "prev_edit": "23:14:12 - 07/22/2015",
+                                        "edit_date": "23:14:51 - 07/22/2015"
+                                    }
+                                ],
+                                "count": 1
+                            }
+                        },
+                        {
+                            "author": "cooldude97",
+                            "text": "Nice post brah",
+                            "points": 9,
+                            "post_date": "12:21:44 - 07/23/2015",
+                            "prev_edit": "12:21:44 - 07/23/2015",
+                            "history":
+                            {
+                                "versionArray":
+                                [
+                                ],
+                                "count": 0
+                            }
+                        }
+                    ],
+                    "count": 2
+                }
+            }
