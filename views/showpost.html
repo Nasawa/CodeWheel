@@ -9,13 +9,18 @@
         <div class="col-md-9 col-xs-11">
 
             <div class="info">
-                <a href="{{ post.url }}" target="_blank">
-                    {{ post.title }}
-                    <span class="url">({{ post.url | hostnameFromUrl }})</span>
-                </a>
+                {{ post.title }}
             </div>
             <div>
-                <span>submitted by <a href="#/users/{{ post.owner }}">{{ post.owner }}</a></span>
+                <span>{{ post.score || 0 }} votes</span>
+                -
+                <span>submitted by <a href="#/users/{{post.owner}}">{{post.owner}}</a></span>
+                -
+                <a href="#/posts/{{ postId }}">comments</a>
+                <a ng-click="deletePost(postId)" ng-show="signedIn() && post.owner === currentUser.username">delete</a>
+            </div>
+            <div>
+                <span class="badge" ng-repeat="tag in post.tags">{{tag}}</span>
             </div>
         </div>
         <div class="col-md-2">
