@@ -47,4 +47,14 @@ app.controller('PostsCtrl', function($scope, $location, Post)
     {
         Post.delete(postId);
     };
+    
+    $scope.commentCount = function(post)
+    {
+        return Object.keys(post.comments).length;
+    };
+    
+    $scope.getAuthor = function(post)
+    {
+        return Post.getAuthor(post)
+    };
 });

@@ -59,6 +59,12 @@ body {
     cursor: pointer;
 }
 
+.votenum {
+    padding:-10px !important;
+    margin:-10px !important;
+    margin-top: -38px !important;
+}
+
 .auth-forms {
     max-width:400px;
     margin:0 auto;

@@ -19,6 +19,11 @@ app.factory('Post', function($firebase, FIREBASE_URL, User)
                 return posts.$add(post).then(function(ref)
                 {
                     var postId = ref.name();
+                    var newPost = Post.find(postId);
+                    
+                    newPost.$child('postId').$set(postId);
+                    newPost.$child('createDate').$set(new Date());
+                    newPost.$child('editDate').$set(new Date());
                     
                     user.$child('posts').$child(postId).$set(postId);
                     
@@ -164,6 +169,10 @@ app.factory('Post', function($firebase, FIREBASE_URL, User)
             {
                 return post.downvotes.hasOwnProperty(User.getCurrent().username);
             }
+        },
+        getAuthor: function(post)
+        {
+            return User.findByUsername(post.owner);
         }
     };
             
